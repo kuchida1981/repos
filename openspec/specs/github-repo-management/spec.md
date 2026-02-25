@@ -1,7 +1,7 @@
 # github-repo-management Specification
 
 ## Purpose
-TBD - created by archiving change github-repo-iac. Update Purpose after archive.
+Terraform を使用した GitHub リポジトリ管理において、リポジトリの設定、ブランチ保護、レビューポリシー、および状態管理（State）の安全性と共有性を定義します。
 ## Requirements
 ### Requirement: Repository Initialization and Standard Configuration
 システムは、Terraformを使用してGitHubリポジトリを作成または管理下に置くことができ、かつ標準的な基本設定（Issue有効、Wiki無効、マージ後ブランチ削除等）を適用しなければならない (SHALL)。これらの設定（`has_issues`, `has_projects`, `has_wiki`）は個別にカスタマイズ可能であり、かつ GitHub Pages の設定も動的に統合できなければならない (SHALL)。
@@ -42,3 +42,13 @@ TBD - created by archiving change github-repo-iac. Update Purpose after archive.
 - **WHEN** `visibility` に `secret` などの不正な値を設定して `terraform plan` を実行する
 - **THEN** Terraform がバリデーションエラーを返し、実行を停止する
 
+### Requirement: Remote State Management via GCS
+システムは、Terraform の実行状態（State）を安全に共有し、かつ同時実行を防止するために、Google Cloud Storage (GCS) をリモートバックエンドとして使用しなければならない (SHALL)。また、バケットのバージョニングが有効であることを前提とし、不慮のデータ消失から復旧可能でなければならない (SHALL)。
+
+#### Scenario: Verify GCS backend configuration
+- **WHEN** `terraform init` を実行する
+- **THEN** バックエンドとして `gcs` が正しく構成され、指定されたバケットに接続される
+
+#### Scenario: State Locking enforcement
+- **WHEN** 同時に複数のプロセスから `terraform apply` を試みる
+- **THEN** GCS バックエンドによりステートロックが機能し、二重実行が防止される

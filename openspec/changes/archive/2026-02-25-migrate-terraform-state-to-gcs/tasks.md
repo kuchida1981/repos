@@ -6,7 +6,7 @@
 
 ## 2. Terraform 設定の変更 (完了済み)
 
-- [x] 2.1 `main.tf` に `backend "gcs"` ブロックを追加し、バケット名 `terraform-state-kuchida1981` とプレフィックス `terraform/state` を設定する
+- [x] 2.1 `main.tf` に `backend "gcs"` ブロックを追加し、バケット名とプレフィックスを `-backend-config` で設定可能にする
 - [x] 2.2 `terraform init -migrate-state` を実行し、既存のステートをリモートへ移行する
 
 ## 3. 完了確認 (完了済み)

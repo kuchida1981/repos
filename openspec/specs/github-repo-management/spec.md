@@ -47,7 +47,7 @@ Terraform を使用した GitHub リポジトリ管理において、リポジ�
 
 #### Scenario: Verify GCS backend configuration
 - **WHEN** `terraform init` を実行する
-- **THEN** バックエンドとして `gcs` が正しく構成され、指定されたバケット `terraform-state-kuchida1981` に接続される
+- **THEN** バックエンドとして `gcs` が正しく構成され、指定されたバケットに接続される
 
 #### Scenario: State Locking enforcement
 - **WHEN** 同時に複数のプロセスから `terraform apply` を試みる

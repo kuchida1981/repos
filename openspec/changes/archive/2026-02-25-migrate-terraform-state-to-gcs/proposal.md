@@ -5,7 +5,7 @@ Terraform のステート管理をローカルファイルから Google Cloud St
 ## What Changes
 
 - Terraform バックエンドをローカルから `gcs` に変更します。
-- GCS バケット `terraform-state-kuchida1981` をステート保存先として使用します。
+- `-backend-config` オプションを利用した「部分的な設定（Partial Configuration）」を採用し、バケット名やプレフィックスをコードから分離します。
 - `terraform init -migrate-state` を実行し、既存のステートをリモートへ移行します。
 
 ## Capabilities

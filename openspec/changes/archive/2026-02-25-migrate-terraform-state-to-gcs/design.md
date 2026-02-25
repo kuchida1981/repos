@@ -19,6 +19,7 @@
 - **Decision 1: Use GCS Backend**: 既存の GCP 環境を活用し、ネイティブなステートロックとバージョニングをサポートする GCS を選択しました。
 - **Decision 2: Region Selection**: `asia-northeast1` (東京) を使用し、地理的な近接性とレイテンシを最適化します。
 - **Decision 3: Prefix Strategy**: `terraform/state` をプレフィックスとして使用し、バケット内での整理を容易にします。
+- **Decision 4: Partial Configuration**: バケット名やプレフィックスを `main.tf` にハードコードせず、実行時に渡す方式を採用します。これにより、環境ごとの設定切り替えや CI/CD への適合性を向上させます。
 
 ## Risks / Trade-offs
 

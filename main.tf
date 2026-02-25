@@ -1,8 +1,5 @@
 terraform {
-  backend "gcs" {
-    bucket = "terraform-state-kuchida1981"
-    prefix = "terraform/state"
-  }
+  backend "gcs" {}
 
   required_providers {
     github = {

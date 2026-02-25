@@ -1,9 +1,0 @@
-name: migrate-terraform-state-to-gcs
-status: drafting
-description: "Migrate Terraform state from local storage to Google Cloud Storage (GCS) for better collaboration, durability, and state locking."
-specs:
-  - github-repo-management
-artifacts:
-  - proposal.md
-  - design.md
-  - tasks.md

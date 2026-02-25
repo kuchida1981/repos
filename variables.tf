@@ -1,6 +1,2 @@
-variable "github_token" {
-  description = "GitHub Personal Access Token"
-  type        = string
-  sensitive   = true
-  default     = null # 環境変数 GITHUB_TOKEN があれば不要
-}
+# 未使用の変数を削除しました。
+# 認証は環境変数 GITHUB_TOKEN を通じて行われます。

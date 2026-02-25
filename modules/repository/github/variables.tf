@@ -10,9 +10,14 @@ variable "description" {
 }
 
 variable "visibility" {
-  description = "The visibility of the repository (public or private)"
+  description = "The visibility of the repository (public, private, or internal)"
   type        = string
   default     = "private"
+
+  validation {
+    condition     = contains(["public", "private", "internal"], var.visibility)
+    error_message = "The visibility must be one of: public, private, internal."
+  }
 }
 
 variable "default_branch" {
@@ -31,6 +36,24 @@ variable "enforce_admins" {
   description = "Enforce branch protection for admins"
   type        = bool
   default     = true
+}
+
+variable "has_issues" {
+  description = "Set to true to enable the GitHub Issues features on the repository"
+  type        = bool
+  default     = true
+}
+
+variable "has_projects" {
+  description = "Set to true to enable the GitHub Projects features on the repository"
+  type        = bool
+  default     = false
+}
+
+variable "has_wiki" {
+  description = "Set to true to enable the GitHub Wiki features on the repository"
+  type        = bool
+  default     = false
 }
 
 variable "pages" {
